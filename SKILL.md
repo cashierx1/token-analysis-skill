@@ -88,7 +88,9 @@ Search X/Twitter for:
 - The dev/founder handle (`from:devhandle`) — check activity and shipping
 - Notable accounts mentioning the token
 
-## Watchlist Management
+## Watchlist Management (Optional)
+
+Optional persistent tracking. Skip this section if you just need one-off analysis.
 
 Watchlist file: `watchlist.json` in the skill directory.
 
@@ -150,7 +152,7 @@ Watchlist file: `watchlist.json` in the skill directory.
 1. Set status to "killed" or "exited" with reason
 2. Keep the entry for track record (don't delete)
 
-## Token Monitoring (Companion)
+## Token Monitoring (Optional)
 
 Set up ongoing monitoring for watched tokens using cron jobs.
 
