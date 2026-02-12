@@ -42,7 +42,7 @@ Every token evaluation follows this order:
 5. **Narrative** — Does it ride a live meta? Who's talking about it?
 6. **Decision** — Verdict, entry target, size, kill conditions, catalyst
 
-Uses [DexScreener](https://dexscreener.com) (free, no API key) as the primary data source.
+Uses [DexScreener](https://dexscreener.com) (free, no API key) as the primary data source. For social/discourse analysis, the skill uses the [X API v2](https://developer.x.com/) — you'll need a bearer token. Sign up at the [X Developer Portal](https://developer.x.com/en/portal/dashboard) and set `X_BEARER_TOKEN` in your environment.
 
 ## Disclaimer
 

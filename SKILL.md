@@ -1,11 +1,9 @@
 ---
 name: token-analysis
 description: >
-  Token analysis, watchlist management, and monitoring for early-stage crypto tokens.
-  Founder-first research framework with 6-step evaluation. Use when asked to:
-  analyze a token, do token analysis, evaluate a token, research a token,
-  "should I buy", watch a token, add/check/remove watchlist, token research,
-  or when given a DexScreener link.
+  Founder-first research framework for early-stage crypto tokens. 6-step analysis,
+  watchlist, and monitoring. Triggers: "analyze token", "should I buy", "token research",
+  "watchlist", or any DexScreener link.
 metadata:
   openclaw:
     emoji: "🔬"
@@ -16,6 +14,8 @@ metadata:
 Founder-first research framework for early-stage crypto tokens. Evaluate tokens systematically, manage a watchlist, and monitor positions.
 
 For deep analysis, read `references/playbook.md` in this skill's directory — it contains the investment philosophy (metagame lifecycle, attention theory, probabilistic thinking) that informs every evaluation.
+
+For a completed example showing expected depth and tone, see `references/example-analysis.md`.
 
 ## Analysis Framework
 
@@ -154,6 +154,15 @@ curl -s "https://api.x.com/2/users/by/username/handle?user.fields=description,pu
 - Notable accounts mentioning the token — quality of attention
 
 **If X API is unavailable:** Fall back to web search for recent X posts, or check the dev's public X profile directly at `https://x.com/handle`. The analysis framework works with any source of social data — the API just makes it systematic.
+
+### Chain-Specific Gotchas
+
+The framework is chain-agnostic, but watch for these:
+
+- **Base / L2s:** Bridge liquidity can be thin — check if liquidity is native or bridged. Low gas means more bot activity; buy/sell ratios can be misleading.
+- **Solana:** Token extensions can hide transfer fees or freeze authority. Always check mint authority and whether it's revoked. pump.fun tokens have standardized mechanics but graduation to Raydium changes the liquidity profile.
+- **Ethereum L1:** Gas costs mean smaller traders are priced out — holder base skews whale-heavy. Check if the token is also deployed on L2s.
+- **General:** Always verify the contract address against DexScreener. Check for honeypot indicators: can you actually sell? Is there a max transaction limit? Is the deployer wallet still holding a large share?
 
 ## Watchlist Management (Optional)
 
