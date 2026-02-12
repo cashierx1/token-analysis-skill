@@ -19,6 +19,8 @@ For deep analysis, read `references/playbook.md` in this skill's directory — i
 
 ## Analysis Framework
 
+**Always verify token identity by contract address + chain before analysis.** Ticker symbols are not unique — multiple tokens can share the same symbol. Use the contract address from DexScreener as the canonical identifier.
+
 When evaluating any token, assess these in order:
 
 ### 1. Founder / Dev Deep Dive (MOST IMPORTANT)
@@ -28,6 +30,7 @@ When evaluating any token, assess these in order:
 - Social graph: who follows them? Notable backers/mutuals? Quality of engaged accounts (builders vs bots).
 - Activity: posting frequency, shipping updates, engagement levels.
 - Red flags: anonymous with no history, inactive, only posting price action.
+- If no founder/dev can be identified, flag this as a significant risk factor. Anonymous with no history is a red flag — not a dealbreaker if product traction is strong, but requires higher conviction on other criteria.
 - Always hyperlink: `[@dev](https://x.com/dev)`
 
 ### 2. Product Reality
@@ -63,6 +66,44 @@ Always end with:
 - **Entry target:** specific FDV or price
 - **Kill conditions:** what makes this trade dead
 - **Catalyst:** what would make you scale in
+
+### Output Template
+
+Use this format for every analysis:
+
+```
+## [SYMBOL] Analysis — [DATE]
+
+**Token:** [name] ([symbol])
+**Address:** [contract address]
+**Chain:** [chain]
+**FDV:** $[X] | **Liq:** $[X] | **Age:** [X days]
+
+### Founder / Dev
+[findings]
+
+### Product
+[findings]
+
+### Team
+[findings]
+
+### Market Structure
+[findings — include FDV vs comps, buy/sell ratio, liq/FDV ratio, holder concentration]
+
+### Narrative
+[findings — attention state, discourse trend, who's talking]
+
+### Verdict
+- **Decision:** watch / small entry / conviction entry / pass
+- **Entry target:** [specific FDV or price]
+- **Kill conditions:** [what makes this dead]
+- **Catalyst:** [what would make you scale in]
+- **Confidence:** [low / medium / high]
+
+### Sources
+- [list URLs used: DexScreener, X posts, etc.]
+```
 
 ## Data Sources
 
@@ -126,38 +167,40 @@ Watchlist file: `watchlist.json` in the skill directory.
 }
 ```
 
-### Commands
+### How to Use
 
-**Add token** — "watch [token]" or "add [token] to watchlist":
+These are example phrases you say to your agent — not literal CLI commands.
+
+**Add token** — say something like "watch [token]" or "add [token] to watchlist":
 1. Fetch DexScreener data (price, FDV, liquidity, age)
 2. Search X/Twitter for the token and dev
 3. Build thesis, entry targets, kill conditions
 4. Add to watchlist.json
 
-**Check watchlist** — "check watchlist" or "watchlist status":
+**Check watchlist** — say "check watchlist" or "watchlist status":
 1. For each token with status "watching" or "entered":
    - Fetch current data from DexScreener
    - Compare to entry/exit/kill targets
    - Flag anything that hit targets
 2. Output concise status table
 
-**Analyze token** — "analyze [token]" or paste a DexScreener link:
+**Analyze token** — say "analyze [token]" or paste a DexScreener link:
 1. Fetch DexScreener data
 2. Search X/Twitter for token and dev
 3. Run the 6-step analysis framework above
 4. Output decision with sizing recommendation
 
-**Remove token** — "remove [token] from watchlist":
+**Remove token** — say "remove [token] from watchlist":
 1. Set status to "killed" or "exited" with reason
 2. Keep the entry for track record (don't delete)
 
 ## Token Monitoring (Optional)
 
-Set up ongoing monitoring for watched tokens using cron jobs.
+This section describes the monitoring pattern. Implementation depends on your agent platform (OpenClaw cron, scheduled tasks, etc.).
 
-### Hourly monitoring cron
+### Hourly monitoring pattern
 
-For each monitored token, the cron job should:
+For each monitored token, the monitoring job should:
 1. Fetch DexScreener data (price, FDV, liquidity, volume, buy/sell counts)
 2. Search X/Twitter for dev activity and new mentions
 3. Compare to previous check — flag significant moves
@@ -187,7 +230,7 @@ Keep a log file per token at `monitors/SYMBOL.md`:
 - Express conviction through sizing, not certainty.
 - A "pass" is a valid and good outcome — there are infinite opportunities.
 - Always show your work: scenarios, probabilities, expected value.
-- Update watchlist.json after every analysis.
+- If using the watchlist, update watchlist.json after every analysis.
 
 ---
 

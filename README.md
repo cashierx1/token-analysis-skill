@@ -23,6 +23,14 @@ https://github.com/CnxLuc/token-analysis
 
 That's it. Claude Code, Codex, OpenClaw, or any coding agent will know what to do.
 
+## Quick Start
+
+After installing, try these prompts:
+
+- "Analyze this token: 0x..." (paste any contract address)
+- "What do you think of [TOKEN] on Base?"
+- "Add [TOKEN] to watchlist" (if using optional watchlist)
+
 ## Analysis Framework
 
 Every token evaluation follows this order:
