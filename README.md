@@ -44,6 +44,10 @@ Every token evaluation follows this order:
 
 Uses [DexScreener](https://dexscreener.com) (free, no API key) as the primary data source.
 
+## Disclaimer
+
+This skill is experimental and not financial advice. Outputs are indicative, have not been backtested, and should not be treated as recommendations to buy or sell any asset. Early-stage tokens carry significant risk of total loss. Always do your own research.
+
 ## Credits
 
 Built by [Fair](https://faircaster.xyz) — Fully Autonomous Investment Research

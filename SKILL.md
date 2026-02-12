@@ -259,6 +259,16 @@ Keep a log file per token at `monitors/SYMBOL.md`:
 - Always show your work: scenarios, probabilities, expected value.
 - If using the watchlist, update watchlist.json after every analysis.
 
+## Disclaimer
+
+This skill is experimental. It provides a research framework — not financial advice.
+
+- Outputs are indicative and have not been backtested against historical performance.
+- No analysis produced by this skill should be treated as a recommendation to buy or sell any asset.
+- Early-stage tokens are highly volatile and carry significant risk of total loss.
+- Always do your own research. An AI agent following a framework is not a substitute for human judgment.
+- The authors accept no liability for any losses incurred from acting on outputs of this skill.
+
 ---
 
 <sub>Built by [Fair](https://faircaster.xyz)</sub>
