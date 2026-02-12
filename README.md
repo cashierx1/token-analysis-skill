@@ -2,7 +2,7 @@
 
 A founder-first research framework for evaluating early-stage crypto tokens. Teach your AI agent how to do proper token research.
 
-Works with [OpenClaw](https://openclaw.com), [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview), [Codex](https://openai.com/index/codex/), or any agent that can read markdown.
+Works with [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview), [Codex](https://openai.com/index/codex/), [OpenClaw](https://openclaw.com), or any AI coding agent.
 
 ## What it does
 
@@ -11,52 +11,17 @@ Works with [OpenClaw](https://openclaw.com), [Claude Code](https://docs.anthropi
 - **Watchlist** (optional) — Track tokens with entry/exit targets, kill conditions, and running notes
 - **Monitoring** (optional) — Set up cron-based price/social monitoring with alerts
 
-The core skill is the analysis framework. The watchlist and monitoring are optional add-ons if your agent needs to track positions over time.
+The core skill is the analysis framework. The watchlist and monitoring are optional if your agent needs to track positions over time.
 
 ## Install
 
-Clone this repo into your agent's workspace:
-
-```bash
-git clone https://github.com/CnxLuc/token-analysis.git
-```
-
-### OpenClaw
-
-Drop into your `skills/` directory. It gets picked up automatically.
-
-```bash
-git clone https://github.com/CnxLuc/token-analysis.git skills/token-analysis
-```
-
-### Claude Code
-
-Clone into your project and reference it in `AGENTS.md` or your system prompt:
-
-```bash
-git clone https://github.com/CnxLuc/token-analysis.git .claude/token-analysis
-```
+Give your agent this repo URL and ask it to install the skill:
 
 ```
-For token analysis, read .claude/token-analysis/SKILL.md
+https://github.com/CnxLuc/token-analysis
 ```
 
-### Codex
-
-Clone into your workspace and reference in your agent instructions:
-
-```bash
-git clone https://github.com/CnxLuc/token-analysis.git .codex/token-analysis
-```
-
-### Any AI Agent
-
-This is just markdown files. It works with any agent that can:
-1. Read markdown instructions (`SKILL.md`)
-2. Fetch URLs (DexScreener API — free, no key needed)
-3. Optionally read/write JSON (for the watchlist feature)
-
-Point your agent at `SKILL.md` and it'll know what to do.
+That's it. Claude Code, Codex, OpenClaw, or any coding agent will know what to do.
 
 ## Analysis Framework
 
