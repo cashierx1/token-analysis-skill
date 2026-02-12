@@ -42,7 +42,18 @@ Every token evaluation follows this order:
 5. **Narrative** — Does it ride a live meta? Who's talking about it?
 6. **Decision** — Verdict, entry target, size, kill conditions, catalyst
 
-Uses [DexScreener](https://dexscreener.com) (free, no API key) as the primary data source. For social/discourse analysis, the skill uses the [X API v2](https://developer.x.com/) — you'll need a bearer token. Sign up at the [X Developer Portal](https://developer.x.com/en/portal/dashboard) and set `X_BEARER_TOKEN` in your environment.
+Uses [DexScreener](https://dexscreener.com) (free, no API key) for market data.
+
+### X API Bearer Token (required for social analysis)
+
+The founder/dev research step uses the X API v2 to search tweets and look up profiles. You need a bearer token:
+
+1. Go to the [X Developer Portal](https://developer.x.com/en/portal/dashboard)
+2. Create a project and app (the free tier works)
+3. Generate a **Bearer Token** under your app's "Keys and Tokens" section
+4. Set it in your environment: `export X_BEARER_TOKEN=your_token_here`
+
+The skill will use this token to search for token discourse and dev activity. Without it, the agent will fall back to web search, which is less comprehensive.
 
 ## Disclaimer
 
