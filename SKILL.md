@@ -128,7 +128,24 @@ Web UI: `https://dexscreener.com/search?q=SYMBOL_OR_ADDRESS`
 
 ### X/Twitter Research
 
-Search X/Twitter for:
+Social discourse is critical for early-stage tokens. You need some form of X/Twitter access:
+
+**Option 1: xAI Grok API (recommended)**
+Use the Responses API with the `x_search` built-in tool. Requires an xAI API key (`api.x.ai`). Grok searches X natively and returns summarized discourse with citations.
+```bash
+curl -s https://api.x.ai/v1/responses \
+  -H "Authorization: Bearer $XAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"grok-4-fast","tools":[{"type":"x_search"}],"input":"Latest discourse on [TOKEN] on Base. Updates from @[dev]. Bullet points."}'
+```
+
+**Option 2: X API v2 (direct)**
+Requires an X/Twitter API bearer token. Search endpoints at `api.x.com/2/tweets/search/recent`.
+
+**Option 3: Web search / manual**
+If you have no API keys, use web search to find recent X posts about the token. Less comprehensive but still useful.
+
+Search for:
 - The token name/symbol — gauge discourse and sentiment
 - The dev/founder handle (`from:devhandle`) — check activity and shipping
 - Notable accounts mentioning the token
