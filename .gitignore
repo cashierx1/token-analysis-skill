@@ -1,0 +1,7 @@
+# Populated watchlist data (template is tracked, your data isn't)
+# Uncomment if you want to keep your watchlist private:
+# watchlist.json
+
+# Monitor logs
+monitors/*.md
+!monitors/.gitkeep
