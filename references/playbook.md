@@ -6,8 +6,6 @@ Distilled decision frameworks for early-stage crypto token analysis. These aren'
 
 ## 1. The Metagame
 
-*Source: Cobie, "Trading the Metagame"*
-
 Bull-market crypto is a video game with an evolving meta. Knowing the current meta gives you maximum edge.
 
 **Rules:**
@@ -20,8 +18,6 @@ Bull-market crypto is a video game with an evolving meta. Knowing the current me
 ---
 
 ## 2. Attention Theory of Value
-
-*Source: Cobie, "Tokens in the Attention Economy"*
 
 The only scarce resource in crypto is attention. Price = f(attention) on trader timescales.
 
@@ -38,8 +34,6 @@ The only scarce resource in crypto is attention. Price = f(attention) on trader 
 
 ## 3. Probabilistic Thinking
 
-*Source: Cobie, "Probabilistic Thinking"*
-
 You can't see the future. You can estimate probabilities across possible futures and find trades where the math is in your favour.
 
 **Rules:**
@@ -53,8 +47,6 @@ You can't see the future. You can estimate probabilities across possible futures
 
 ## 4. Market Caps, FDV & Unlocks
 
-*Source: Cobie, "On the Meme of Market Caps & Unlocks"*
-
 Market cap measures demand. FDV measures supply. They are different things.
 
 **Rules:**
@@ -66,8 +58,6 @@ Market cap measures demand. FDV measures supply. They are different things.
 ---
 
 ## 5. Incentive Mapping
-
-*Source: Cobie, "(3,3)" + "Incentives Structures"*
 
 "Show me the incentive and I will show you the outcome."
 
@@ -93,9 +83,7 @@ A dev's social graph is a leading indicator of holder quality and distribution.
 
 ## 7. Fair Launch Advantage
 
-*Source: Cobie, "New Launches Part 1"*
-
-Increasingly, all returns are captured privately before launch. Fair launches (Clanker, pump.fun style) reverse this — no seed round capturing 100x before you.
+Increasingly, all returns are captured privately before launch. Fair launches reverse this — no seed round capturing 100x before you.
 
 **Rules:**
 - **Compare launch FDV to comparable projects at comparable market conditions.**
@@ -135,4 +123,4 @@ Track wins and losses, and why. Every outcome should sharpen the model.
 
 ---
 
-*Primary sources: Cobie (cobie.substack.com) — Trading the Metagame, Tokens in the Attention Economy, Probabilistic Thinking, On the Meme of Market Caps & Unlocks, (3,3), Incentives Structures, New Launches Part 1.*
+*Influenced by the crypto canon — particularly writings on metagame theory, attention economics, and market structure. Adapted for early-stage token analysis.*
