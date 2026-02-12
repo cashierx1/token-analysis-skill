@@ -126,29 +126,34 @@ https://api.dexscreener.com/latest/dex/tokens/ADDRESS
 
 Web UI: `https://dexscreener.com/search?q=SYMBOL_OR_ADDRESS`
 
-### X/Twitter Research
+### X/Twitter Research (X API v2)
 
-Social discourse is critical for early-stage tokens. You need some form of X/Twitter access:
+Social discourse is critical for early-stage tokens. Use the X API v2 to search for relevant posts. Requires an X API bearer token (`$X_BEARER_TOKEN`).
 
-**Option 1: xAI Grok API (recommended)**
-Use the Responses API with the `x_search` built-in tool. Requires an xAI API key (`api.x.ai`). Grok searches X natively and returns summarized discourse with citations.
+Search for the token:
 ```bash
-curl -s https://api.x.ai/v1/responses \
-  -H "Authorization: Bearer $XAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"grok-4-fast","tools":[{"type":"x_search"}],"input":"Latest discourse on [TOKEN] on Base. Updates from @[dev]. Bullet points."}'
+curl -s "https://api.x.com/2/tweets/search/recent?query=SYMBOL%20-is:retweet&max_results=20&tweet.fields=created_at,public_metrics,author_id&expansions=author_id&user.fields=username,public_metrics" \
+  -H "Authorization: Bearer $X_BEARER_TOKEN"
 ```
 
-**Option 2: X API v2 (direct)**
-Requires an X/Twitter API bearer token. Search endpoints at `api.x.com/2/tweets/search/recent`.
+Search for dev activity:
+```bash
+curl -s "https://api.x.com/2/tweets/search/recent?query=from:devhandle%20-is:retweet&max_results=10&tweet.fields=created_at,public_metrics" \
+  -H "Authorization: Bearer $X_BEARER_TOKEN"
+```
 
-**Option 3: Web search / manual**
-If you have no API keys, use web search to find recent X posts about the token. Less comprehensive but still useful.
+Look up a user profile:
+```bash
+curl -s "https://api.x.com/2/users/by/username/handle?user.fields=description,public_metrics,created_at" \
+  -H "Authorization: Bearer $X_BEARER_TOKEN"
+```
 
-Search for:
+**What to search for:**
 - The token name/symbol — gauge discourse and sentiment
 - The dev/founder handle (`from:devhandle`) — check activity and shipping
-- Notable accounts mentioning the token
+- Notable accounts mentioning the token — quality of attention
+
+**If X API is unavailable:** Fall back to web search for recent X posts, or check the dev's public X profile directly at `https://x.com/handle`. The analysis framework works with any source of social data — the API just makes it systematic.
 
 ## Watchlist Management (Optional)
 
