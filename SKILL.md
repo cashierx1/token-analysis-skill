@@ -15,7 +15,7 @@ metadata:
 
 Founder-first research framework for early-stage crypto tokens. Evaluate tokens systematically, manage a watchlist, and monitor positions.
 
-For deep analysis, load `references/playbook.md` — it contains the investment philosophy (metagame lifecycle, attention theory, probabilistic thinking) that informs every evaluation.
+For deep analysis, read `references/playbook.md` in this skill's directory — it contains the investment philosophy (metagame lifecycle, attention theory, probabilistic thinking) that informs every evaluation.
 
 ## Analysis Framework
 
@@ -61,7 +61,6 @@ When evaluating any token, assess these in order:
 Always end with:
 - **Verdict:** watch / small entry / conviction entry / pass
 - **Entry target:** specific FDV or price
-- **Size:** % of portfolio
 - **Kill conditions:** what makes this trade dead
 - **Catalyst:** what would make you scale in
 
@@ -108,10 +107,10 @@ Watchlist file: `watchlist.json` in the skill directory.
       "thesis": "One-line investment thesis",
       "fdvAtAdd": 1000000,
       "entryTargets": [
-        { "fdv": 500000, "size": "1% of portfolio", "note": "dip buy" }
+        { "fdv": 500000, "note": "dip buy if thesis intact" }
       ],
       "scaleTargets": [
-        { "fdv": 2000000, "size": "3% of portfolio", "condition": "user growth >1000" }
+        { "fdv": 2000000, "condition": "user growth >1000" }
       ],
       "killConditions": [
         "dev goes quiet >3 days",
