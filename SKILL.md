@@ -75,18 +75,18 @@ Use this format for every analysis:
 ## [SYMBOL] Analysis — [DATE]
 
 **Token:** [name] ([symbol])
-**Address:** [contract address]
+**Address:** [contract address](https://dexscreener.com/[chain]/[contract address])
 **Chain:** [chain]
 **FDV:** $[X] | **Liq:** $[X] | **Age:** [X days]
 
 ### Founder / Dev
-[findings]
+[findings — link all X accounts as [@handle](https://x.com/handle)]
 
 ### Product
 [findings]
 
 ### Team
-[findings]
+[findings — link all X accounts as [@handle](https://x.com/handle)]
 
 ### Market Structure
 [findings — include FDV vs comps, buy/sell ratio, liq/FDV ratio, holder concentration]
@@ -104,6 +104,11 @@ Use this format for every analysis:
 ### Sources
 - [list URLs used: DexScreener, X posts, etc.]
 ```
+
+**Formatting rules:**
+- **Contract addresses** must hyperlink to DexScreener: `[0x...](https://dexscreener.com/base/0x...)`
+- **X/Twitter accounts** must hyperlink: `[@handle](https://x.com/handle)`
+- Never use bare addresses or @handles without links
 
 ## Data Sources
 
