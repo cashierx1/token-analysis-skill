@@ -18,7 +18,7 @@ The core skill is the analysis framework. The watchlist and monitoring are optio
 Give your agent this repo URL and ask it to install the skill:
 
 ```
-https://github.com/CnxLuc/token-analysis
+https://github.com/CnxLuc/token-analysis-skill
 ```
 
 That's it. Claude Code, Codex, OpenClaw, or any coding agent will know what to do.
