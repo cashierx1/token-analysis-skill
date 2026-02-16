@@ -118,6 +118,8 @@ This is the **summary** shown in chat. The full deep-dive is published to Telegr
 - **Farcaster accounts** must hyperlink: `[@handle](https://warpcast.com/handle)`
 - Never use bare addresses or @handles without links
 
+**Output language:** Check `OUTPUT_LANG` in `.env`. If set (e.g. `ru`, `zh`, `ja`), write the entire analysis — both the chat summary and the Telegraph article — in that language. Section headers, verdicts, scenario descriptions, everything. If `OUTPUT_LANG` is empty or not set, default to English.
+
 ### Telegraph Deep Report
 
 Every analysis gets published to [telegra.ph](https://telegra.ph) as an expanded report. The chat output is a concise summary; the Telegraph article is the full deep-dive with additional detail.
@@ -183,6 +185,94 @@ Example node structure for a section:
 3. Write the expanded Telegraph version with full detail
 4. Publish to Telegraph via `createPage`
 5. Append the Telegraph URL to the chat summary
+6. Log the analysis to Google Sheets (if `GOOGLE_SHEETS_WEBHOOK` is set)
+
+### Google Sheets Logging
+
+Every analysis is logged as a row in a Google Sheets spreadsheet — a running journal of all evaluated tokens with verdicts and report links.
+
+**If `GOOGLE_SHEETS_WEBHOOK` is not set in `.env`, skip this step silently.**
+
+**One-time setup:**
+1. Open your Google Sheets spreadsheet
+2. Menu: Extensions → Apps Script
+3. Replace the contents of `Code.gs` with the script below
+4. Click Deploy → New deployment → select type "Web app"
+5. Set "Execute as" → Me, "Who has access" → Anyone
+6. Click Deploy, authorize when prompted
+7. Copy the Web app URL → save it as `GOOGLE_SHEETS_WEBHOOK` in `.env`
+
+**Apps Script code (paste into Code.gs):**
+```javascript
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    data.date,
+    data.token_address,
+    data.ticker,
+    data.fdv,
+    data.mc,
+    data.liquidity,
+    data.age,
+    data.founder,
+    data.product,
+    data.team,
+    data.market_structure,
+    data.narrative,
+    data.verdict,
+    data.full_report
+  ]);
+  return ContentService.createTextOutput(
+    JSON.stringify({ status: "ok" })
+  ).setMimeType(ContentService.MimeType.JSON);
+}
+```
+
+**After each analysis, POST the results:**
+```bash
+curl -s -L "$GOOGLE_SHEETS_WEBHOOK" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "date": "2026-02-16",
+    "token_address": "0x...",
+    "ticker": "SYMBOL",
+    "fdv": "$14.1M",
+    "mc": "$3.66M",
+    "liquidity": "$279K",
+    "age": "~14 months",
+    "founder": "Brief founder summary (1-2 sentences)",
+    "product": "Brief product summary (1-2 sentences)",
+    "team": "Brief team summary (1-2 sentences)",
+    "market_structure": "Key metrics summary",
+    "narrative": "Brief narrative summary (1-2 sentences)",
+    "verdict": "small entry / watch / pass — confidence level",
+    "full_report": "https://telegra.ph/..."
+  }'
+```
+
+The `-L` flag is required — Google Apps Script returns a 302 redirect. Do **not** add `-X POST` — curl infers POST from `-d`, and `-L` correctly follows the redirect as GET to get the response.
+
+**Field mapping:**
+
+| JSON field | Sheet column | Content |
+|-----------|-------------|---------|
+| `date` | DATE | Analysis date (YYYY-MM-DD) |
+| `token_address` | TOKEN ADDRESS | Contract address |
+| `ticker` | TICKER | Token symbol |
+| `fdv` | FDV | Fully Diluted Valuation |
+| `mc` | MC | Market Cap |
+| `liquidity` | LIQUIDITY | Total liquidity |
+| `age` | AGE | Token age |
+| `founder` | FOUNDER | 1-2 sentence summary |
+| `product` | PRODUCT | 1-2 sentence summary |
+| `team` | TEAM | 1-2 sentence summary |
+| `market_structure` | MARKET STRUCTURE | Key metrics |
+| `narrative` | NARRATIVE | 1-2 sentence summary |
+| `verdict` | VERDICT | Decision + confidence |
+| `full_report` | FULL REPORT | Telegraph article URL |
+
+Summary fields (FOUNDER through NARRATIVE) should be brief — 1-2 sentences, not the full section text. Language follows `OUTPUT_LANG`.
 
 ## Data Sources
 

@@ -59,6 +59,7 @@ The `.env` file is git-ignored and never committed.
 | `X_BEARER_TOKEN` | X/Twitter API v2 — social discourse, dev activity | [X Developer Portal](https://developer.x.com/en/portal/dashboard) → create app → Bearer Token |
 | `NEYNAR_API_KEY` | Farcaster / Neynar — user profiles + wallet verification (free: 200K credits). Cast search requires Starter $9/mo | [dev.neynar.com](https://dev.neynar.com/) → create app → API key |
 | `TELEGRAPH_TOKEN` | Telegraph — deep report publishing | One-time: `curl -s "https://api.telegra.ph/createAccount?short_name=TokenAnalysis&author_name=Fair&author_url=https://faircaster.xyz"` → copy `access_token` |
+| `GOOGLE_SHEETS_WEBHOOK` | Google Sheets — analysis log | Extensions → Apps Script → deploy as Web App (see SKILL.md) |
 
 ## Disclaimer
 
