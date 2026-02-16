@@ -42,18 +42,23 @@ Every token evaluation follows this order:
 5. **Narrative** — Does it ride a live meta? Who's talking about it?
 6. **Decision** — Verdict, entry target, size, kill conditions, catalyst
 
-Uses [DexScreener](https://dexscreener.com) (free, no API key) for market data.
+Uses [DexScreener](https://dexscreener.com) (free, no API key) for market data, [X/Twitter](https://x.com) and [Farcaster](https://warpcast.com) for social research.
 
-### X API Bearer Token (required for social analysis)
+### API Keys Setup
 
-The founder/dev research step uses the X API v2 to search tweets and look up profiles. You need a bearer token:
+All keys are **optional** — the agent falls back to web search when a key is missing.
 
-1. Go to the [X Developer Portal](https://developer.x.com/en/portal/dashboard)
-2. Create a project and app (the free tier works)
-3. Generate a **Bearer Token** under your app's "Keys and Tokens" section
-4. Set it in your environment: `export X_BEARER_TOKEN=your_token_here`
+1. Copy the template: `cp .env.example .env`
+2. Fill in the keys you have (see below)
+3. Load them: `source .env` or `export $(cat .env | grep -v '^#' | xargs)`
 
-The skill will use this token to search for token discourse and dev activity. Without it, the agent will fall back to web search, which is less comprehensive.
+The `.env` file is git-ignored and never committed.
+
+| Key | Service | How to get |
+|-----|---------|-----------|
+| `X_BEARER_TOKEN` | X/Twitter API v2 — social discourse, dev activity | [X Developer Portal](https://developer.x.com/en/portal/dashboard) → create app → Bearer Token |
+| `NEYNAR_API_KEY` | Farcaster / Neynar — user profiles + wallet verification (free: 200K credits). Cast search requires Starter $9/mo | [dev.neynar.com](https://dev.neynar.com/) → create app → API key |
+| `TELEGRAPH_TOKEN` | Telegraph — deep report publishing | One-time: `curl -s "https://api.telegra.ph/createAccount?short_name=TokenAnalysis&author_name=Fair&author_url=https://faircaster.xyz"` → copy `access_token` |
 
 ## Disclaimer
 

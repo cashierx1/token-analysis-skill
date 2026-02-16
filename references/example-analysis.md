@@ -13,11 +13,13 @@ This is a sample completed analysis showing the expected depth and format.
 
 ### Founder / Dev
 
-Lead dev is [@yolodev](https://x.com/yolodev) — 3-year-old account, 4.2K followers. Previously built a DeFi yield aggregator on Arbitrum that reached $8M TVL before sunsetting in 2025. Posts 3-5x daily, mix of shipping updates and ecosystem commentary. Followed by [@0xSammy](https://x.com/0xSammy), [@mikedemarais](https://x.com/mikedemarais), and several active Base deployers.
+Lead dev is [@yolodev](https://x.com/yolodev) (X, 4.2K followers) and [@yolodev](https://warpcast.com/yolodev) (Farcaster, 2.1K followers). 3-year-old X account. Previously built a DeFi yield aggregator on Arbitrum that reached $8M TVL before sunsetting in 2025. Posts 3-5x daily on both platforms, mix of shipping updates and ecosystem commentary. Active in `/base` and `/defi` channels on Farcaster. Followed by [@0xSammy](https://x.com/0xSammy), [@mikedemarais](https://x.com/mikedemarais), and several active Base deployers.
 
-Social graph quality is strong — mostly builders and active traders, minimal bot followers. Engagement is organic: replies are technical, not "LFG" spam.
+Social graph quality is strong on both platforms — mostly builders and active traders, minimal bot followers. Engagement is organic: replies are technical, not "LFG" spam.
 
-No red flags. Active, shipping, credible history.
+**Wallet verification:** Farcaster verified address `0x1234...abcd` matches the deployer wallet. No sells since launch — green signal.
+
+No red flags. Active, shipping, credible history, wallet-verified.
 
 ### Product
 
@@ -41,7 +43,11 @@ Pseudonymous but building publicly — acceptable for this stage.
 
 ### Narrative
 
-Sits at the intersection of AI + DeFi on Base. The "AI managing your portfolio" narrative is heating up but hasn't peaked — still in thesis phase, not exuberance. Mentioned by 3 accounts with >10K followers in the past week. Discourse is growing but not viral yet.
+Sits at the intersection of AI + DeFi on Base. The "AI managing your portfolio" narrative is heating up but hasn't peaked — still in thesis phase, not exuberance.
+
+**X/Twitter:** Mentioned by 3 accounts with >10K followers in the past week. Discourse is growing but not viral yet.
+
+**Farcaster:** 12 casts in `/base` channel over the past week from accounts with >1K followers. 3 of 5 active promoters hold the token (verified via Farcaster wallet addresses) — strong holder-backed signal.
 
 Attention state: niche → becoming favoured. This is the buy zone.
 
@@ -58,8 +64,12 @@ Attention state: niche → becoming favoured. This is the buy zone.
 - https://dexscreener.com/base/0x1234abcd
 - https://x.com/yolodev/status/123456789
 - https://x.com/0xSammy/status/987654321
+- https://warpcast.com/yolodev
+- https://warpcast.com/yolodev/0xabc123
 - https://yolo.finance
+
+📎 **Full report:** https://telegra.ph/YOLO-Analysis-01-15
 
 ---
 
-*This is a fictional example for illustration. All names, addresses, and data are made up.*
+*This is a fictional example for illustration. All names, addresses, and data are made up. The Telegraph link is also fictional.*

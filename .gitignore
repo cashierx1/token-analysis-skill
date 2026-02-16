@@ -1,3 +1,6 @@
+# API keys (never commit secrets)
+.env
+
 # Populated watchlist data (template is tracked, your data isn't)
 # Uncomment if you want to keep your watchlist private:
 # watchlist.json
