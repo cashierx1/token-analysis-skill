@@ -290,9 +290,38 @@ https://api.dexscreener.com/latest/dex/tokens/ADDRESS
 
 Web UI: `https://dexscreener.com/search?q=SYMBOL_OR_ADDRESS`
 
-### X/Twitter Research (X API v2)
+### X/Twitter Research
 
-Social discourse is critical for early-stage tokens. Use the X API v2 to search for relevant posts. Requires an X API bearer token (`$X_BEARER_TOKEN`).
+Social discourse is critical for early-stage tokens. Two API providers are supported — check `TWITTER_PROVIDER` in `.env`:
+
+- `socialdata` → **SocialData API** — pay-per-use ($0.0002/tweet), no monthly cap, 120 req/min
+- `xapi` → **X API v2** — tiered plans (Basic: 10K posts/mo), official API
+
+If `TWITTER_PROVIDER` is not set, use whichever key is available (`SOCIALDATA_API_KEY` or `X_BEARER_TOKEN`). If both are set and no provider specified, prefer SocialData.
+
+#### Provider: SocialData (`TWITTER_PROVIDER=socialdata`)
+
+Search for the token:
+```bash
+curl -s "https://api.socialdata.tools/twitter/search?query=SYMBOL" \
+  -H "Authorization: Bearer $SOCIALDATA_API_KEY"
+```
+
+Search for dev activity:
+```bash
+curl -s "https://api.socialdata.tools/twitter/search?query=from:devhandle" \
+  -H "Authorization: Bearer $SOCIALDATA_API_KEY"
+```
+
+Look up a user profile:
+```bash
+curl -s "https://api.socialdata.tools/twitter/user/handle" \
+  -H "Authorization: Bearer $SOCIALDATA_API_KEY"
+```
+
+SocialData response uses Twitter v1-style fields: `full_text`, `user.screen_name`, `user.followers_count`, `favorite_count`, `retweet_count`, `views_count`, `tweet_created_at`. Tweets are in `tweets[]` array, pagination via `next_cursor`.
+
+#### Provider: X API v2 (`TWITTER_PROVIDER=xapi`)
 
 Search for the token:
 ```bash
@@ -312,12 +341,29 @@ curl -s "https://api.x.com/2/users/by/username/handle?user.fields=description,pu
   -H "Authorization: Bearer $X_BEARER_TOKEN"
 ```
 
-**What to search for:**
+X API v2 response uses: `text`, `includes.users[].username`, `public_metrics.like_count`, `public_metrics.retweet_count`, `public_metrics.impression_count`, `created_at`. Tweets are in `data[]` array, pagination via `meta.next_token`.
+
+#### Field mapping (both providers return the same data, different field names)
+
+| Data | SocialData | X API v2 |
+|------|-----------|----------|
+| Tweet text | `full_text` | `text` |
+| Author handle | `user.screen_name` | `includes.users[].username` |
+| Followers | `user.followers_count` | `includes.users[].public_metrics.followers_count` |
+| Likes | `favorite_count` | `public_metrics.like_count` |
+| Retweets | `retweet_count` | `public_metrics.retweet_count` |
+| Views | `views_count` | `public_metrics.impression_count` |
+| Date | `tweet_created_at` | `created_at` |
+
+#### What to search for
 - The token name/symbol — gauge discourse and sentiment
 - The dev/founder handle (`from:devhandle`) — check activity and shipping
 - Notable accounts mentioning the token — quality of attention
 
-**If X API is unavailable:** Fall back to web search for recent X posts, or check the dev's public X profile directly at `https://x.com/handle`. The analysis framework works with any source of social data — the API just makes it systematic.
+#### Fallback chain
+1. Use the provider set in `TWITTER_PROVIDER`
+2. If that provider's key is missing or credits are exhausted → try the other provider
+3. If both unavailable → fall back to web search for recent X posts, or check the dev's public X profile directly at `https://x.com/handle`
 
 ### Farcaster Research (Neynar API)
 
